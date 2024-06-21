@@ -15,7 +15,8 @@ RUN echo "ServerName localhost:80" >> /etc/apache2/apache2.conf
 RUN echo "max_input_vars=5000" >> /usr/local/etc/php
 RUN a2enmod rewrite
 RUN a2enmod ssl
-#RUN a2enmod headers  
+#RUN a2enmod headers
+RUN git clone git://git.moodle.org/moodle.git   
 RUN chmod -R 765 /var/www/html/
 RUN service apache2 restart
 
