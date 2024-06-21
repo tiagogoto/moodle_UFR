@@ -1,0 +1,18 @@
+services:
+   moodle:
+     build: .
+     ports:
+       - 80:80
+     volumes:
+       - ./html:/var/www/html
+       - ./moodledata:/var/www/moodledata
+     depends_on:
+     - BD
+   BD:
+     image: mysql:latest
+     ports:
+       - 3306:3306
+     env_file:
+       - databse.env
+     volumes:
+       - ./data:/var/lib/postgresql
